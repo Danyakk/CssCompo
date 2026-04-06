@@ -1,24 +1,28 @@
-import logo from './logo.svg';
 import './App.css';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { Home, About, Products, Contacts, Info, NotFound } from './components/Task1'
+import { MainPage } from './components/Task2';
+import { MainPage2 } from './components/Task3';
+import Footer from './components/Footer/Footer';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<MainPage/>} >
+        {/* <Route path="/" element={<MainPage2/> } >   */}
+        {/* <Route  element = {<Home/> } /> */}
+        <Route path="home" element={<Home />} />
+        <Route path="about" element={<About />} />
+        <Route path="products" element={<Products />} />
+        <Route path="contacts" element={<Contacts />} />
+        <Route path="info" element={<Info />} />
+        <Route path="*" element= {<NotFound />} />   {/*подстановочный путь 404 страница*/}
+       </Route>
+      </Routes>
+      <Footer></Footer>
+    </BrowserRouter>
+
   );
 }
 
